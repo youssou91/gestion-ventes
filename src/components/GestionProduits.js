@@ -224,8 +224,7 @@ const GestionProduits = () => {
             name: 'Actions',
             cell: row => (
               <>
-                <button
-                  className="bg-yellow-500 text-white py-1 px-3 rounded mr-2"
+                <button className="bg-yellow-500 text-white py-1 px-3 rounded mr-2"
                   onClick={() => handleEditProduct(row)}
                 >
                   <FontAwesomeIcon icon={faEdit} />

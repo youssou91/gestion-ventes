@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Filler } from 'chart.js';
 import moment from 'moment';
-
-// Importation des icônes FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 
 ChartJS.register(Title, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Filler);
 
 const TableauDeBord = () => {
   // Liste des produits
   const [products, setProducts] = useState([
-    { id: 1, name: 'Lunettes de vue classique' },
-    { id: 2, name: 'Lunettes de lecture magnifiquement légères' },
-    { id: 3, name: 'Lunettes de soleil aviator' },
+    { id: 1, name: 'Lunettes de vue classique', color: '#FF6347' }, // Tomate
+    { id: 2, name: 'Lunettes de lecture magnifiquement légères', color: '#1E90FF' }, // Bleu Dodger
+    { id: 3, name: 'Lunettes de soleil aviator', color: '#32CD32' }, // Vert Lime
   ]);
 
   // Liste des ventes
@@ -83,8 +82,8 @@ const TableauDeBord = () => {
     datasets: products.map((product) => ({
       label: product.name,
       data: Array.from({ length: 12 }, (_, index) => sales.filter(sale => sale.productId === product.id && moment(sale.saleDate).month() === index).reduce((acc, sale) => acc + sale.total, 0)),
-      borderColor: '#4e73df',
-      backgroundColor: 'rgba(78, 115, 223, 0.2)',
+      borderColor: product.color, // Couleur spécifique au produit
+      backgroundColor: `${product.color}80`, // Une version plus transparente pour le fond
       fill: true, // Le remplissage est activé
     })),
   };

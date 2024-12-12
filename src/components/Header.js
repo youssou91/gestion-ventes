@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-gray-800 text-white shadow-md">
       <div className="flex items-center">
-        <img src="/path-to-your-logo.png" alt="Logo" className="w-10 h-10 mr-2" />
+        <img src="/gest_ventes.png" alt="Logo" className="w-10 h-10 mr-2" />
         <h1 className="text-xl font-bold">Gest_Ventes</h1>
       </div>
 
