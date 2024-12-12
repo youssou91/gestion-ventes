@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "nom": "Lunettes de vue Classiques",
+      "description": "Lunettes de vue élégantes avec monture en métal.",
+      "prix": 49.99,
+      "categorie": "Lunettes de correction",
+      "image": "/images/lunettes_vue_classiques.jpg"
+    },
+    {
+      "id": 2,
+      "nom": "Lunettes de soleil Ray-Ban",
+      "description": "Lunettes de soleil emblématiques Ray-Ban, protection UV.",
+      "prix": 120.00,
+      "categorie": "Lunettes de soleil",
+      "image": "/images/lunettes_soleil_rayban.jpg"
+    },
+    {
+      "id": 3,
+      "nom": "Lunettes de lecture à Monture Métal",
+      "description": "Lunettes de lecture avec monture légère en métal.",
+      "prix": 30.50,
+      "categorie": "Lunettes de lecture",
+      "image": "/images/lunettes_lecture_metal.jpg"
+    },
+    {
+      "id": 4,
+      "nom": "Lunettes de sport Oakley",
+      "description": "Lunettes de sport Oakley, légères et résistantes.",
+      "prix": 140.75,
+      "categorie": "Lunettes de sport",
+      "image": "/images/lunettes_sport_oakley.jpg"
+    },
+    {
+      "id": 5,
+      "nom": "Lunettes de soleil Gucci",
+      "description": "Lunettes de soleil stylées Gucci, avec logo et verre dégradé.",
+      "prix": 250.00,
+      "categorie": "Lunettes de soleil",
+      "image": "/images/lunettes_soleil_gucci.jpg"
+    },
+    {
+      "id": 6,
+      "nom": "Lunettes de lecture Vintage",
+      "description": "Lunettes de lecture avec une monture rétro en acétate.",
+      "prix": 45.00,
+      "categorie": "Lunettes de lecture",
+      "image": "/images/lunettes_lecture_vintage.jpg"
+    },
+    {
+      "id": 7,
+      "nom": "Lunettes de sport Nike",
+      "description": "Lunettes de sport Nike avec une technologie de ventilation avancée.",
+      "prix": 110.00,
+      "categorie": "Lunettes de sport",
+      "image": "/images/lunettes_sport_nike.jpg"
+    }
+]
+  
