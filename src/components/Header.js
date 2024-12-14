@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faBell, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -7,16 +7,16 @@ const Header = () => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Récupérer l'utilisateur connecté depuis le localStorage
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    setCurrentUser(user);
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      setCurrentUser(JSON.parse(user));
+    }
   }, []);
 
   const handleLogout = () => {
-    // Retirer l'utilisateur actuel du localStorage
     localStorage.removeItem('currentUser');
-    // Redirection vers la page de connexion après déconnexion
+    setCurrentUser(null);
     navigate('/connexion');
   };
 
@@ -42,6 +42,7 @@ const Header = () => {
 
         {currentUser ? (
           <div className="flex items-center space-x-2">
+            <FontAwesomeIcon icon={faUser} className="text-white text-lg" />
             <span className="text-white">{currentUser.name}</span>
             <button
               onClick={handleLogout}
@@ -56,6 +57,7 @@ const Header = () => {
             onClick={() => navigate('/connexion')}
             className="text-white hover:text-gray-300"
           >
+            <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
             Connexion
           </button>
         )}

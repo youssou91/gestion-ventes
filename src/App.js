@@ -11,12 +11,12 @@ import AppCSS from './App.css';  // Si nécessaire pour la mise en style de l'ap
 const App = () => {
   return (
     <Router>
-      <div className="App">
+      <div className="">
         {/* Header global de l'application */}
         <Header />
 
         {/* Routes et contenu dynamique */}
-        <div className="container">
+        <div className="">
           <Routes>
             {/* Définition des différentes routes */}
             <Route path="/" element={<TableauDeBord />} />
