@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 
 const Connexion = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -28,7 +31,9 @@ const Connexion = () => {
 
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
+      navigate('/');
       setMessage('Connexion réussie !');
+
     } else {
       setMessage('Email ou mot de passe incorrect.');
     }

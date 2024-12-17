@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Filler } from 'chart.js';
+import { Line, Bar, Radar } from 'react-chartjs-2'; // Importer d'autres types de graphiques
+import { Chart as ChartJS, Title, Tooltip, Legend, CategoryScale, LinearScale, RadialLinearScale, BarElement, LineElement, PointElement, Filler } from 'chart.js';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-ChartJS.register(Title, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Filler);
+// Enregistrer les éléments et le scale nécessaire pour le radar
+ChartJS.register(Title, Tooltip, Legend, CategoryScale, LinearScale, RadialLinearScale, BarElement, LineElement, PointElement, Filler);
 
 const TableauDeBord = () => {
   const [products, setProducts] = useState([
@@ -23,6 +24,7 @@ const TableauDeBord = () => {
   const [salesByPeriod, setSalesByPeriod] = useState([]);
   const [maxSales, setMaxSales] = useState(null);
   const [minSales, setMinSales] = useState(null);
+  const [chartType, setChartType] = useState('line'); // Nouvel état pour le type de graphique
 
   const handlePeriodChange = (e) => {
     const period = e.target.value;
@@ -32,6 +34,10 @@ const TableauDeBord = () => {
   const handleProductChange = (e) => {
     const productId = e.target.value;
     setSelectedProduct(productId);
+  };
+
+  const handleChartTypeChange = (e) => {
+    setChartType(e.target.value); // Changer le type de graphique
   };
 
   const filterSalesByPeriod = (period) => {
@@ -79,10 +85,9 @@ const TableauDeBord = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-12 p-8 bg-gray-50 rounded-3xl shadow-lg">
-      <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">Tableau de Bord Analytique</h2>
+    <div className="max-w-6xl mx-auto mt-1 p-8 bg-gray-50 rounded-3xl shadow-lg">
+      <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-3">Tableau de Bord Analytique</h2>
 
-      {/* Sélecteurs */}
       <div className="flex flex-wrap justify-between gap-6 mb-8">
         <div className="w-full md:w-1/2">
           <label className="block text-sm font-medium text-gray-700">Sélectionnez un produit</label>
@@ -108,7 +113,19 @@ const TableauDeBord = () => {
         </div>
       </div>
 
-      {/* Statistiques */}
+      {/* Ajout d'une section pour choisir le type de graphique */}
+      <div className="w-full md:w-1/2 mb-6">
+        <label className="block text-sm font-medium text-gray-700">Type de graphique</label>
+        <select
+          onChange={handleChartTypeChange}
+          value={chartType}
+          className="mt-1 block w-full px-4 py-2 text-base border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          <option value="line">Ligne</option>
+          <option value="bar">Barres</option>
+          <option value="radar">Radar</option>
+        </select>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="flex flex-col items-center justify-center p-6 bg-green-100 rounded-2xl shadow-md">
           <FontAwesomeIcon icon={faArrowUp} size="2x" className="text-green-600 mb-4" />
@@ -122,10 +139,11 @@ const TableauDeBord = () => {
         </div>
       </div>
 
-      {/* Graphique */}
       <div className="p-6 bg-white rounded-2xl shadow-md">
         <h3 className="text-xl font-bold mb-6 text-gray-800">Ventes sur l'année 2024</h3>
-        <Line data={dataForChart} />
+        {chartType === 'line' && <Line data={dataForChart} />}
+        {chartType === 'bar' && <Bar data={dataForChart} />}
+        {chartType === 'radar' && <Radar data={dataForChart} />}
       </div>
     </div>
   );

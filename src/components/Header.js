@@ -23,22 +23,20 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-gray-800 text-white shadow-md">
       <div className="flex items-center">
-        <img src="/gest_ventes.png" alt="Logo" className="w-10 h-10 mr-2" />
-        <h1 className="text-xl font-bold">Gest_Ventes</h1>
+      <a href="/" className="flex  text-white hover:text-gray-300">
+          <img src="/gest_ventes.png" alt="Logo" className="w-10 h-10 mr-2" />
+          <h1 className="text-xl font-bold">Gest_Ventes</h1>
+        </a>
       </div>
 
       <nav className="flex space-x-6">
-        <a href="/gestion-produits" className="text-white hover:text-gray-300">Gestion Produits</a>
-        <a href="/inscription" className="text-white hover:text-gray-300">Inscription</a>
-        <a href="/suivi-ventes" className="text-white hover:text-gray-300">Suivi des Ventes</a>
-        <a href="/" className="text-white hover:text-gray-300">Tableau de Bord</a>
+        <a href="/gestion-produits" className="text-white hover:text-gray-300"> Produits</a>
+        <a href="/suivi-ventes" className="text-white hover:text-gray-300"> Ventes</a>
+       
       </nav>
 
       <div className="flex items-center space-x-4">
-        <button className="relative">
-          <FontAwesomeIcon icon={faBell} className="text-white text-lg" />
-          <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">3</span>
-        </button>
+       
 
         {currentUser ? (
           <div className="flex items-center space-x-2">
@@ -53,13 +51,16 @@ const Header = () => {
             </button>
           </div>
         ) : (
-          <button
-            onClick={() => navigate('/connexion')}
-            className="text-white hover:text-gray-300"
-          >
-            <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
-            Connexion
-          </button>
+          <div className="flex items-center space-x-2">
+            <a href="/inscription" className="text-white hover:text-gray-300">Inscription</a>
+            <button
+              onClick={() => navigate('/connexion')}
+              className="text-white hover:text-gray-300"
+            >
+              <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
+              Connexion
+            </button>
+          </div>
         )}
       </div>
     </header>

@@ -54,8 +54,8 @@ const Inscription = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Créer un compte</h2>
+    <div className="max-w-md mx-auto mt-1 p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-3">Créer un compte</h2>
       {message && <p className="text-center text-green-600 font-semibold mb-4">{message}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="relative">
