@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt, faEye } from "@fortawesome/free-solid-svg-icons";
+import produits from "../produits.json"; // Importation du fichier JSON
 
 const SuiviVentes = () => {
-  const [products] = useState([
-    { id: 1, type: "Lunettes de correction", name: "Lunettes de vue classique", price: 50 },
-    { id: 2, type: "Lunettes de lecture", name: "Lunettes de lecture magnifiquement légères", price: 30 },
-    { id: 3, type: "Lunettes de soleil", name: "Lunettes de soleil aviator", price: 80 },
-  ]);
+  const [products] = useState(produits); // Utiliser les produits importés depuis le fichier JSON
 
   const [sales, setSales] = useState(() => {
     const savedSales = localStorage.getItem("sales");
@@ -34,10 +31,10 @@ const SuiviVentes = () => {
     if (product) {
       const newSale = {
         productId: product.id,
-        productName: product.name,
+        productName: product.nom, // Utilise "nom" pour le nom du produit
         quantity: parseInt(saleData.quantity),
-        price: product.price,
-        total: product.price * saleData.quantity,
+        price: product.prix, // Utilise "prix" pour le prix du produit
+        total: product.prix * saleData.quantity,
         saleDate: saleData.saleDate,
       };
 
@@ -115,7 +112,7 @@ const SuiviVentes = () => {
                   <option value="">Sélectionner un produit</option>
                   {products.map((product) => (
                     <option key={product.id} value={product.id}>
-                      {product.name} - {product.price} €
+                      {product.nom} - {product.prix} €
                     </option>
                   ))}
                 </select>
@@ -167,17 +164,9 @@ const SuiviVentes = () => {
         columns={columns}
         data={sales}
         pagination
-        search={{
-          searchable: true,
-          inputPlaceholder: "Rechercher par produit, quantité, prix unitaire, total, ou date de vente",
-        }}
-        sortable
-        defaultSortBy={{ id: 1, desc: false }}
         highlightOnHover
-        defaultSortFieldId={1}
         className="mt-6"
       />
-
     </div>
   );
 };
